@@ -1,0 +1,53 @@
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-scroll';
+
+export default function Hero() {
+  return (
+    <section
+      id="hero"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden"
+    >
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-white/[0.02] -z-10" />
+      <div className="absolute inset-0 bg-gradient-to-tr from-background to-background/0 -z-10" />
+
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center space-y-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-4"
+          >
+            <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl/none text-gradient-primary">
+              AI-First Web Applications
+              <br />
+              Tailored for Your Success
+            </h1>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
+              Empowering SMEs and individuals with seamless, scalable, and
+              intuitive AI solutions for the modern web.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="space-x-4"
+          >
+            <Link to="features" smooth>
+              <Button size="lg" className="gradient-primary">
+                Explore Our Solutions
+              </Button>
+            </Link>
+            <Button size="lg" variant="outline">
+              Learn More
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
