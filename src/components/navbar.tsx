@@ -43,8 +43,8 @@ export default function Navbar() {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
-          {navItems.map((item) => (
-            {item.isRoute ? (
+          {navItems.map((item) =>
+            item.isRoute ? (
               <RouterLink
                 key={item.to}
                 to={item.to}
@@ -54,15 +54,15 @@ export default function Navbar() {
               </RouterLink>
             ) : (
               <ScrollLink
-              key={item.to}
-              to={item.to}
-              smooth
-              className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
-            >
-              {item.name}
+                key={item.to}
+                to={item.to}
+                smooth
+                className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
+              >
+                {item.name}
               </ScrollLink>
-            )}
-          ))}
+            )
+          )}
           <ThemeToggle />
           <Button>Get Started</Button>
         </div>
@@ -81,8 +81,8 @@ export default function Navbar() {
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col space-y-4 mt-4">
-                {navItems.map((item) => (
-                  {item.isRoute ? (
+                {navItems.map((item) =>
+                  item.isRoute ? (
                     <RouterLink
                       key={item.to}
                       to={item.to}
@@ -92,15 +92,15 @@ export default function Navbar() {
                     </RouterLink>
                   ) : (
                     <ScrollLink
-                    key={item.to}
-                    to={item.to}
-                    smooth
-                    className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
-                  >
-                    {item.name}
+                      key={item.to}
+                      to={item.to}
+                      smooth
+                      className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
+                    >
+                      {item.name}
                     </ScrollLink>
-                  )}
-                ))}
+                  )
+                )}
                 <Button>Get Started</Button>
               </div>
             </SheetContent>
