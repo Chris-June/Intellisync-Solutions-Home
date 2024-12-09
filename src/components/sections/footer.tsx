@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Brain, Linkedin, Mail, Twitter } from 'lucide-react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
@@ -122,6 +121,15 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p> 2024 IntelliSync Solutions. All rights reserved.</p>
           <div className="flex space-x-4">
+            <RouterLink to="/privacy-policy" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </RouterLink>
+            <RouterLink to="/terms-of-service" className="hover:text-foreground transition-colors">
+              Terms of Service
+            </RouterLink>
+            <RouterLink to="/cookie-policy" className="hover:text-foreground transition-colors">
+              Cookie Policy
+            </RouterLink>
             <LinkedInShare />
           </div>
         </div>
