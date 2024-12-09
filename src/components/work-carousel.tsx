@@ -9,6 +9,7 @@ interface WorkCarouselProps {
 
 export function WorkCarousel({ onProjectSelect }: WorkCarouselProps) {
   const [width, setWidth] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
   const carousel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,18 +18,35 @@ export function WorkCarousel({ onProjectSelect }: WorkCarouselProps) {
     }
   }, []);
 
+  // Duplicate projects array for infinite scroll effect
+  const duplicatedProjects = [...projects, ...projects];
+
   return (
     <motion.div
       ref={carousel}
       className="cursor-grab overflow-hidden"
       whileTap={{ cursor: "grabbing" }}
+      onMouseDown={() => setIsDragging(true)}
+      onMouseUp={() => setIsDragging(false)}
+      onMouseLeave={() => setIsDragging(false)}
     >
       <motion.div
         drag="x"
         dragConstraints={{ right: 0, left: -width }}
         className="flex gap-4 px-4 md:px-6"
+        initial={{ x: 0 }}
+        animate={{ x: isDragging ? undefined : [-width/2, 0] }}
+        transition={{
+          x: {
+            repeat: Infinity,
+            repeatType: "loop",
+            duration: 50,
+            ease: "linear",
+          },
+        }}
+        whileHover={{ animationPlayState: "paused" }}
       >
-        {projects.map((project, index) => (
+        {duplicatedProjects.map((project, index) => (
           <motion.div
             key={index}
             className={cn(

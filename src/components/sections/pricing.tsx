@@ -9,51 +9,24 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-
-const plans = [
-  {
-    name: 'Basic',
-    price: '$15',
-    description: 'Essential features for small websites',
-    features: [
-      'Basic AI Integration',
-      'Analytics Dashboard',
-      'Email Support',
-      '5 Team Members',
-      '10GB Storage',
-    ],
-  },
-  {
-    name: 'Pro',
-    price: '$35',
-    description: 'Advanced tools for growing businesses',
-    features: [
-      'Advanced AI Features',
-      'Priority Support',
-      'Custom Integrations',
-      'Unlimited Team Members',
-      '100GB Storage',
-      'API Access',
-    ],
-    popular: true,
-  },
-  {
-    name: 'Enterprise',
-    price: 'Custom',
-    description: 'Tailored solutions for large organizations',
-    features: [
-      'Custom AI Development',
-      'Dedicated Support Team',
-      'Custom SLA',
-      'Enterprise Security',
-      'Unlimited Storage',
-      'Advanced Analytics',
-      'Training Sessions',
-    ],
-  },
-];
+import { useState } from 'react';
+import { ContactModal } from '@/components/contact-modal';
+import { pricingTiers } from '@/lib/pricing-data';
 
 export default function Pricing() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTier, setSelectedTier] = useState<typeof pricingTiers[0] | null>(null);
+
+  const handleOpenModal = (tier: typeof pricingTiers[0]) => {
+    setSelectedTier(tier);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedTier(null);
+  };
+
   return (
     <section id="pricing" className="py-24 bg-muted/50">
       <div className="container px-4 md:px-6">
@@ -68,8 +41,8 @@ export default function Pricing() {
             Flexible Pricing for Every Need
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
-            Choose the perfect plan for your business. Start with a free demo to
-            experience our platform firsthand.
+            Choose the perfect plan for your website. All plans include modern, responsive design
+            and essential features.
           </p>
         </motion.div>
 
@@ -80,37 +53,26 @@ export default function Pricing() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="grid gap-8 mt-16 md:grid-cols-3"
         >
-          {plans.map((plan, index) => (
+          {pricingTiers.map((tier, index) => (
             <motion.div
-              key={index}
+              key={tier.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card
-                className={`h-full ${
-                  plan.popular
-                    ? 'border-emerald-400 shadow-lg shadow-emerald-400/10'
-                    : ''
-                }`}
-              >
+              <Card className="h-full">
                 <CardHeader>
-                  {plan.popular && (
-                    <div className="px-3 py-1 text-sm text-emerald-400 border border-emerald-400 rounded-full w-fit mb-4">
-                      Most Popular
-                    </div>
-                  )}
-                  <CardTitle className="text-2xl">{plan.name}</CardTitle>
+                  <CardTitle className="text-2xl">{tier.name}</CardTitle>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-4xl font-bold">{plan.price}</span>
-                    {plan.price !== 'Custom' && <span>/month</span>}
+                    <span className="text-4xl font-bold">${tier.price}</span>
+                    <span>/month</span>
                   </div>
-                  <CardDescription>{plan.description}</CardDescription>
+                  <CardDescription>{tier.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <ul className="space-y-2">
-                    {plan.features.map((feature, i) => (
+                    {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2">
                         <Check className="h-4 w-4 text-emerald-400" />
                         <span className="text-muted-foreground">{feature}</span>
@@ -120,12 +82,10 @@ export default function Pricing() {
                 </CardContent>
                 <CardFooter>
                   <Button
-                    className={`w-full ${
-                      plan.popular ? 'gradient-primary' : ''
-                    }`}
-                    variant={plan.popular ? 'default' : 'outline'}
+                    className="w-full gradient-primary"
+                    onClick={() => handleOpenModal(tier)}
                   >
-                    {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
+                    Get Started
                   </Button>
                 </CardFooter>
               </Card>
@@ -133,6 +93,14 @@ export default function Pricing() {
           ))}
         </motion.div>
       </div>
+
+      {selectedTier && (
+        <ContactModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          selectedTier={selectedTier}
+        />
+      )}
     </section>
   );
 }

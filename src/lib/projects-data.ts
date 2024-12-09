@@ -12,8 +12,7 @@ export const projects = [
       'Advanced analytics and reporting',
     ],
     technologies: ['React', 'Node.js', 'TensorFlow.js', 'GraphQL', 'MongoDB'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
   },
   {
     title: 'Smart Content Management System',
@@ -28,8 +27,7 @@ export const projects = [
       'Multi-platform publishing',
     ],
     technologies: ['Vue.js', 'Python', 'FastAPI', 'PostgreSQL', 'OpenAI'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
   },
   {
     title: 'Intelligent Customer Service Portal',
@@ -44,8 +42,7 @@ export const projects = [
       'Automated follow-ups',
     ],
     technologies: ['React', 'TypeScript', 'Node.js', 'Socket.io', 'Redis'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
   },
   {
     title: 'AI Financial Analytics Dashboard',
@@ -60,8 +57,7 @@ export const projects = [
       'Portfolio optimization',
     ],
     technologies: ['Next.js', 'Python', 'TensorFlow', 'PostgreSQL', 'Redis'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
   },
   {
     title: 'Smart Property Management System',
@@ -76,7 +72,6 @@ export const projects = [
       'Occupancy optimization',
     ],
     technologies: ['React', 'Node.js', 'MongoDB', 'TensorFlow.js', 'AWS'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com',
+    liveUrl: 'https://example.com'
   },
 ];

@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { projects } from '@/lib/projects-data';
 
 interface WorkModalProps {
@@ -70,14 +70,6 @@ export function WorkModal({ isOpen, onClose, project }: WorkModalProps) {
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       View Live
                       <ExternalLink className="ml-2 h-4 w-4" />
-                    </a>
-                  </Button>
-                )}
-                {project.githubUrl && (
-                  <Button variant="outline" asChild>
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      View Code
-                      <Github className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
                 )}
