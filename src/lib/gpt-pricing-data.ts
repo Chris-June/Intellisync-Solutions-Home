@@ -57,7 +57,7 @@ export const gptPricingTiers: PricingTier[] = [
       "Get exclusive Early Beta Feature Releases",
       "Unlimited Custom GPT Builds",
       "1,000 FREE messages for testing your GPT Prior to launching",
-      "1,000 FREE messages for testing your GPT Prior to launching",
+      
       "API Access for total customization (Coming Soon)"
     ],
     highlighted: false
