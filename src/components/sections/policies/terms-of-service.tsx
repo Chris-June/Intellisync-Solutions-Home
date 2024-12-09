@@ -62,9 +62,9 @@ export default function TermsOfService() {
             <p className="text-muted-foreground mb-4">
               For questions about these Terms of Service, please contact us at:
               <br />
-              Email: legal@intellisync.com
+              Email: chris.june@intellisync.ca
               <br />
-              Address: 123 Tech Street, Innovation City, 12345
+              Address: Chatham-Kent, Canada, N7L 0A9
             </p>
           </div>
         </motion.div>

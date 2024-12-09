@@ -18,7 +18,8 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Label } from '@/components/ui/label';
-import { addOns, PricingTier } from '@/lib/pricing-data';
+import { addOns } from '@/lib/pricing-data';
+import { PricingTier } from '@/lib/gpt-pricing-data';
 import { sendContactEmail } from '@/lib/email-service';
 import { toast } from 'sonner';
 import { Info } from 'lucide-react';
@@ -48,7 +49,7 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
         ...formData,
         selectedTier: {
           name: selectedTier.name,
-          price: selectedTier.price
+          price: selectedTier.price ?? 0
         }
       });
       
@@ -62,25 +63,20 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
     }
   };
 
-  const handleAddOnChange = (value: string) => {
+  const handleAddOnToggle = (addOnId: string) => {
     setFormData(prev => {
       const currentAddOns = prev.selectedAddOns;
       
-      if (currentAddOns.includes(value)) {
+      if (currentAddOns.includes(addOnId)) {
         return {
           ...prev,
-          selectedAddOns: currentAddOns.filter(addon => addon !== value)
+          selectedAddOns: currentAddOns.filter((id) => id !== addOnId)
         };
-      }
-      
-      if (currentAddOns.length >= selectedTier.maxAddOns) {
-        toast.error(`You can only select ${selectedTier.maxAddOns} add-ons with the ${selectedTier.name} plan`);
-        return prev;
       }
       
       return {
         ...prev,
-        selectedAddOns: [...currentAddOns, value]
+        selectedAddOns: [...currentAddOns, addOnId]
       };
     });
   };
@@ -129,8 +125,11 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label>Select Add-ons (Choose up to {selectedTier.maxAddOns})</Label>
+            <div className="space-y-4">
+              <Label>Additional Features</Label>
+              <div className="text-sm text-muted-foreground">
+                Select any additional features you'd like to discuss
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {addOns.map((addon) => (
                   <div
@@ -141,7 +140,7 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
                       type="button"
                       variant={formData.selectedAddOns.includes(addon.id) ? "default" : "outline"}
                       className="flex-1 justify-start"
-                      onClick={() => handleAddOnChange(addon.id)}
+                      onClick={() => handleAddOnToggle(addon.id)}
                     >
                       <span className="truncate">{addon.name}</span>
                     </Button>

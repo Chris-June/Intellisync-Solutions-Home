@@ -1,66 +1,81 @@
-interface PricingTier {
+export interface PricingTier {
   id: string;
   name: string;
-  price: number;
-  isCustom?: boolean;
+  price: number | undefined;
   description: string;
   features: string[];
   highlighted: boolean;
-  maxAddOns: number;
+  isPopular?: boolean;
 }
 
 export const gptPricingTiers: PricingTier[] = [
   {
-    id: 'starter',
-    name: "Starter",
-    price: 0,
-    description: "Perfect for individuals and small projects",
+    id: 'basic',
+    name: "Basic",
+    price: 19.99,
+    description: "Kickstart your journey with essential tools for success.",
     features: [
-      "1 Custom GPT Model",
-      "Basic Knowledge Base (up to 10MB)",
-      "100 Chat Sessions/month",
-      "Basic Analytics",
-      "Community Support",
-      "Standard Response Time"
+      "1 million tokens monthly for your needs",
+      "2,400 Messages per month",
+      "Knowledge Base Access",
+      "Share and embed your assistant seamlessly",
+      "Access actionable Insights & Statistics",
+      "1,000 FREE messages for testing your GPT Prior to launching"
+     
     ],
-    highlighted: false,
-    maxAddOns: 1
+    highlighted: false
   },
   {
     id: 'professional',
     name: "Professional",
-    price: 49,
-    description: "Ideal for growing businesses and content creators",
+    price: 37.99,
+    description: "Empower your growing business with advanced capabilities.",
     features: [
-      "5 Custom GPT Models",
-      "Advanced Knowledge Base (up to 100MB)",
-      "1,000 Chat Sessions/month",
-      "Advanced Analytics Dashboard",
-      "Priority Support",
-      "Custom AI Persona Templates",
-      "Multiple Website Integration",
-      "API Access"
+      "Everything in Basic plus",
+      "2 million tokens to supercharge your projects",
+      "4,800 Messages per Month",
+      "Enhanced Knowledge Base Access for deeper insights",
+      "Effortless Assistant Sharing & Embedding",
+      "Unleash next-level Insights & Statistics",
+      "1,000 FREE messages for testing your GPT Prior to launching"
     ],
-    highlighted: true,
-    maxAddOns: 3
+    highlighted: true
+  },
+  {
+    id: 'premium',
+    name: "Premium",
+    price: 53.99,
+    description: "Unleash the full power of IntelliSync for your organization.",
+    features: [
+      "Everything in Professional Plus",
+      "3 million tokens to meet enterprise-scale demands",
+      "7,200 Messages per Month",
+      "Advanced Knowledge Base Access for strategic insights",
+      "Share and embed across your organization with ease",
+      "Detailed Insights & Statistics to fuel decisions",
+      "Larger Embedding File Sizes for expansive projects",
+      "Get exclusive Early Beta Feature Releases",
+      "Unlimited Custom GPT Builds",
+      "1,000 FREE messages for testing your GPT Prior to launching",
+      "API Access for total customization (Coming Soon)"
+    ],
+    highlighted: false
   },
   {
     id: 'enterprise',
     name: "Enterprise",
-    price: 99,
-    isCustom: true,
-    description: "Tailored solutions for large organizations",
+    price: undefined,
+    description: "Tailored AI solutions for ultimate performance and control.",
     features: [
-      "Unlimited Custom GPT Models",
-      "Massive Knowledge Base",
-      "Unlimited Chat Sessions",
-      "Full Analytics Suite",
-      "Dedicated Support Team",
-      "Advanced Security Protocols",
-      "Custom Integration",
-      "Compliance Consulting"
+      "Custom AI Models with your own OpenAI API Keys",
+      "All Enterprise Features & More!",
+      "Train AI Models with your unique business data",
+      "Customize System Prompts to match your needs",
+      "Create tailored AI Personas for your team",
+      "One of a kind Chat Interface UI for total branding control",
+      "Experience Multi-Modal Support for seamless interaction",
+      "Custom Built to your specification"
     ],
-    highlighted: false,
-    maxAddOns: 10
+    highlighted: false
   }
 ];

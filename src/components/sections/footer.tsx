@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Brain, Github, Linkedin, Mail, Twitter } from 'lucide-react';
+import { Brain, Linkedin, Mail, Twitter } from 'lucide-react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,20 +8,18 @@ import { LinkedInShare } from '@/components/linkedin-share';
 
 const links = {
   product: [
-    { name: 'Features', to: 'features' },
-    { name: 'Pricing', to: 'pricing' },
-    { name: 'About', to: 'about' },
-    { name: 'Contact', to: 'contact' },
+    { name: 'Features', to: 'features', type: 'scroll' },
+    { name: 'Pricing', to: 'pricing', type: 'scroll' },
+    { name: 'About', to: 'about', type: 'scroll' },
+    { name: 'Contact', href: 'mailto:chris.june@intellisync.ca', type: 'external' },
+    { name: 'Documentation', href: 'https://docs.intellisync.ca', type: 'external' },
   ],
-  legal: [
-    { name: 'Privacy Policy', to: '/privacy-policy' },
-    { name: 'Terms of Service', to: '/terms-of-service' },
-    { name: 'Cookie Policy', to: '/cookie-policy' },
+  tools: [
+    { name: 'GPT Builder', href: 'https://intellisyncsolutions.io', type: 'external' },
   ],
   social: [
-    { name: 'Twitter', icon: Twitter, href: '#' },
-    { name: 'GitHub', icon: Github, href: '#' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/intellisync' },
+    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/intellisync_ca' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/intellisync-solutions' },
   ],
 };
 
@@ -51,29 +49,42 @@ export default function Footer() {
             <ul className="space-y-2">
               {links.product.map((link) => (
                 <li key={link.name}>
-                  <ScrollLink
-                    to={link.to}
-                    smooth
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                  >
-                    {link.name}
-                  </ScrollLink>
+                  {link.type === 'scroll' ? (
+                    <ScrollLink
+                      to={link.to}
+                      smooth
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    >
+                      {link.name}
+                    </ScrollLink>
+                  ) : (
+                    <a
+                      href={link.href}
+                      target={link.type === 'external' ? '_blank' : undefined}
+                      rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
+            <h3 className="font-semibold mb-4">Tools</h3>
             <ul className="space-y-2">
-              {links.legal.map((link) => (
+              {links.tools.map((link) => (
                 <li key={link.name}>
-                  <RouterLink
-                    to={link.to}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  <a
+                    href={link.href}
+                    target={link.type === 'external' ? '_blank' : undefined}
+                    rel={link.type === 'external' ? 'noopener noreferrer' : undefined}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                   >
                     {link.name}
-                  </RouterLink>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -111,15 +122,6 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
           <p> 2024 IntelliSync Solutions. All rights reserved.</p>
           <div className="flex space-x-4">
-            {links.legal.map((link) => (
-              <RouterLink
-                key={link.name}
-                to={link.to}
-                className="hover:text-foreground transition-colors"
-              >
-                {link.name}
-              </RouterLink>
-            ))}
             <LinkedInShare />
           </div>
         </div>

@@ -69,9 +69,9 @@ export default function PrivacyPolicy() {
             <p className="text-muted-foreground mb-4">
               If you have questions about this Privacy Policy, please contact us at:
               <br />
-              Email: privacy@intellisync.com
+              Email: chris.june@intellisync.ca
               <br />
-              Address: 123 Tech Street, Innovation City, 12345
+              Address: Chatham-Kent ON, Canada
             </p>
           </div>
         </motion.div>

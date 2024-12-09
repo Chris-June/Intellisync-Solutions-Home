@@ -60,9 +60,9 @@ export default function CookiePolicy() {
             <p className="text-muted-foreground mb-4">
               If you have questions about our Cookie Policy, please contact us at:
               <br />
-              Email: privacy@intellisync.com
+              Email: chris.june@intellisync.ca
               <br />
-              Address: 123 Tech Street, Innovation City, 12345
+              Address: Chatham Kent On, Canada
             </p>
           </div>
         </motion.div>
