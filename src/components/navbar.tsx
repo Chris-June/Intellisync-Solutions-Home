@@ -26,7 +26,7 @@ const navItems = [
   { name: 'Work', to: 'work', icon: Briefcase },
   { name: 'Pricing', to: 'pricing', icon: PiggyBank },
   { name: 'Contact', to: 'contact', icon: MessageSquare },
-  { name: 'Documentation', href: 'https://docs.intellisync.ca', icon: FileText, type: 'external' },
+  { name: 'Documentation', to: '/documentation', icon: FileText, type: 'route' },
 ];
 
 export default function Navbar() {
@@ -51,24 +51,20 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item) =>
-            item.type === 'external' ? (
-              <a
-                key={item.name}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+            item.type === 'route' ? (
+              <RouterLink
+                key={item.to}
+                to={item.to}
                 className="flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
               >
                 <item.icon className="h-4 w-4 stroke-emerald-400" />
                 <span>{item.name}</span>
-              </a>
+              </RouterLink>
             ) : (
               <ScrollLink
                 key={item.to}
                 to={item.to}
                 smooth
-                spy
-                offset={-64}
                 className="flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
               >
                 <item.icon className="h-4 w-4 stroke-emerald-400" />
@@ -95,24 +91,20 @@ export default function Navbar() {
               </SheetHeader>
               <div className="flex flex-col space-y-4 mt-4">
                 {navItems.map((item) =>
-                  item.type === 'external' ? (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  item.type === 'route' ? (
+                    <RouterLink
+                      key={item.to}
+                      to={item.to}
                       className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
                     >
                       <item.icon className="h-4 w-4 stroke-emerald-400" />
                       <span>{item.name}</span>
-                    </a>
+                    </RouterLink>
                   ) : (
                     <ScrollLink
                       key={item.to}
                       to={item.to}
                       smooth
-                      spy
-                      offset={-64}
                       className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
                     >
                       <item.icon className="h-4 w-4 stroke-emerald-400" />

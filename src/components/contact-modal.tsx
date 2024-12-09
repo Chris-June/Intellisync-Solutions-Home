@@ -17,7 +17,8 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { Label } from '@/components/ui/label';
-import { addOns, PricingTier } from '@/lib/pricing-data';
+import { addOns } from '@/lib/pricing-data';
+import { PricingTier } from '@/lib/gpt-pricing-data';
 import { sendContactEmail } from '@/lib/email-service';
 import { toast } from 'sonner';
 import { Info } from 'lucide-react';
@@ -72,20 +73,12 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
         };
       }
       
-      // Check if adding another add-on would exceed the limit
-      if (currentAddOns.length >= selectedTier.maxAddOns) {
-        toast.error(`The ${selectedTier.name} plan only allows ${selectedTier.maxAddOns} add-ons.`);
-        return prev;
-      }
-      
       return {
         ...prev,
         selectedAddOns: [...currentAddOns, addOnId]
       };
     });
   };
-
-  const remainingAddOns = selectedTier.maxAddOns - formData.selectedAddOns.length;
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -132,55 +125,44 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Label>Additional Features</Label>
-                <span className="text-sm text-muted-foreground">
-                  {remainingAddOns} add-on{remainingAddOns !== 1 ? 's' : ''} remaining
-                </span>
-              </div>
+              <Label>Additional Features</Label>
               <div className="text-sm text-muted-foreground">
-                Select up to {selectedTier.maxAddOns} additional features you'd like to discuss
+                Select any additional features you'd like to discuss
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                {addOns.map((addon) => {
-                  const isSelected = formData.selectedAddOns.includes(addon.id);
-                  const isDisabled = !isSelected && formData.selectedAddOns.length >= selectedTier.maxAddOns;
-                  
-                  return (
-                    <div
-                      key={addon.id}
-                      className="relative flex items-center gap-1"
+                {addOns.map((addon) => (
+                  <div
+                    key={addon.id}
+                    className="relative flex items-center gap-1"
+                  >
+                    <Button
+                      type="button"
+                      variant={formData.selectedAddOns.includes(addon.id) ? "default" : "outline"}
+                      className="flex-1 justify-start"
+                      onClick={() => handleAddOnToggle(addon.id)}
                     >
-                      <Button
-                        type="button"
-                        variant={isSelected ? "default" : "outline"}
-                        className={`flex-1 justify-start ${isDisabled ? 'opacity-50' : ''}`}
-                        onClick={() => handleAddOnToggle(addon.id)}
-                        disabled={isDisabled}
-                      >
-                        <span className="truncate">{addon.name}</span>
-                      </Button>
-                      <TooltipProvider>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="icon"
-                              className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
-                            >
-                              <Info className="h-4 w-4 stroke-emerald-400 cursor-help" />
-                              <span className="sr-only">More information</span>
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent side="top" align="end" className="max-w-[250px]">
-                            {addon.description}
-                          </TooltipContent>
-                        </Tooltip>
-                      </TooltipProvider>
-                    </div>
-                  );
-                })}
+                      <span className="truncate">{addon.name}</span>
+                    </Button>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
+                          >
+                            <Info className="h-4 w-4 stroke-emerald-400 cursor-help" />
+                            <span className="sr-only">More information</span>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent side="top" align="end" className="max-w-[250px]">
+                          {addon.description}
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </div>
+                ))}
               </div>
             </div>
             

@@ -8,10 +8,9 @@ import { LinkedInShare } from '@/components/linkedin-share';
 const links = {
   product: [
     { name: 'Features', to: 'features', type: 'scroll' },
-    { name: 'About', to: 'about', type: 'scroll' },
-    { name: 'Work', to: 'work', type: 'scroll' },
     { name: 'Pricing', to: 'pricing', type: 'scroll' },
-    { name: 'Contact', to: 'contact', type: 'scroll' },
+    { name: 'About', to: 'about', type: 'scroll' },
+    { name: 'Contact', href: 'mailto:chris.june@intellisync.ca', type: 'external' },
     { name: 'Documentation', href: 'https://docs.intellisync.ca', type: 'external' },
   ],
   tools: [
@@ -53,8 +52,6 @@ export default function Footer() {
                     <ScrollLink
                       to={link.to}
                       smooth
-                      spy
-                      offset={-64}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
                     >
                       {link.name}
