@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Bot, Code2, FileText, BarChart3, Puzzle, Zap, MessageSquare, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { GptFeatureModal } from '@/components/gpt-feature-modal';
 import { GptPricingModal } from '@/components/gpt-pricing-modal';
 import {
@@ -86,6 +86,22 @@ export default function GptBuilder() {
   const [selectedFeature, setSelectedFeature] = useState<typeof features[0] | null>(null);
   const [isPricingModalOpen, setIsPricingModalOpen] = useState(false);
 
+  useEffect(() => {
+    // Create and load the chatbot script
+    const script = document.createElement('script');
+    script.src = 'https://intellisync-server-staging-6982843f7a0f.herokuapp.com/chatbot-embed.js';
+    script.dataset.lingoId = 'pNXqEuc4jTU3Y07ylF5I';
+    script.defer = true;
+    script.type = 'module';
+    
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script when component unmounts
+      document.body.removeChild(script);
+    };
+  }, []);
+
   return (
     <section id="gpt-builder" className="py-24 bg-muted/50 relative overflow-hidden">
       {/* Background Pattern */}
@@ -121,12 +137,9 @@ export default function GptBuilder() {
             className="w-full max-w-5xl my-8"
           >
             <div className="relative aspect-video rounded-lg overflow-hidden border border-muted">
-              <div className="absolute inset-0 bg-gradient-to-br from-emerald-400/20 to-cyan-400/20" />
-              <img
-                src="/gpt-builder-preview.png"
-                alt="GPT Builder Platform Interface"
-                className="w-full h-full object-cover"
-              />
+              <div className="absolute inset-0 bg-gradient-to-br from-background via-muted to-background/90" />
+              {/* Chatbot Embed */}
+              <div id="lingo-chatbot" className="w-full h-full relative z-10" />
             </div>
           </motion.div>
 
