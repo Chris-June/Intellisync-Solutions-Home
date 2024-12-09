@@ -8,6 +8,19 @@
     --gradient-secondary: linear-gradient(135deg, #7c3aed 0%, #db2777 100%);
     --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #22d3ee 100%);
   }
+
+  /* Prevent horizontal scrolling globally */
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ensure all sections maintain viewport width */
+  #root {
+    position: relative;
+    width: 100%;
+    overflow-x: hidden;
+  }
 }
 
 @layer utilities {

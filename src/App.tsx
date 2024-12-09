@@ -20,9 +20,9 @@ function App() {
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="intellisync-ui-theme">
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="relative flex min-h-screen flex-col bg-background text-foreground">
         <Navbar />
-        <main className="relative">
+        <main className="flex-1 flex flex-col">
           {isStaticPage ? (
             {
               '/privacy-policy': <PrivacyPolicy />,

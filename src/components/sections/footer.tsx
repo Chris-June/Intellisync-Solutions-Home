@@ -4,6 +4,7 @@ import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { LinkedInShare } from '@/components/linkedin-share';
 
 const links = {
   product: [
@@ -108,7 +109,7 @@ export default function Footer() {
         <Separator className="my-8" />
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© 2024 IntelliSync Solutions. All rights reserved.</p>
+          <p> 2024 IntelliSync Solutions. All rights reserved.</p>
           <div className="flex space-x-4">
             {links.legal.map((link) => (
               <RouterLink

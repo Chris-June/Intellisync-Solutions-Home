@@ -29,7 +29,7 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <nav className="container flex h-16 items-center justify-between">
+      <nav className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
         <ScrollLink
           to="hero"
           smooth
