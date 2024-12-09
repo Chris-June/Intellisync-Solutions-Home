@@ -1,4 +1,4 @@
-import { useState } from 'react';
+  import { useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -63,7 +63,21 @@ export function ProjectModal({ isOpen, onClose }: ProjectModalProps) {
     
     try {
       await sendContactEmail({
-        ...formData,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: `
+Company: ${formData.companyName}
+Project Type: ${formData.projectType}
+Budget Range: ${formData.budgetRange}
+Timeline: ${formData.timeline}
+Description: ${formData.projectDescription}
+        `.trim(),
+        selectedAddOns: [],
+        selectedTier: {
+          name: 'Project Inquiry',
+          price: 0
+        },
         subject: `New Project Inquiry: ${formData.projectType}`,
         type: 'project'
       });

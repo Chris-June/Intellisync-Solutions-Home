@@ -10,6 +10,8 @@ interface EmailData {
     name: string;
     price: number;
   };
+  subject?: string;
+  type?: string;
 }
 
 export async function sendContactEmail(data: EmailData) {

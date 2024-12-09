@@ -15,7 +15,7 @@ export const gptPricingTiers: PricingTier[] = [
     price: 19.99,
     description: "Kickstart your journey with essential tools for success.",
     features: [
-      "1 million tokens monthly for your needs",
+     
       "2,400 Messages per month",
       "Knowledge Base Access",
       "Share and embed your assistant seamlessly",
@@ -32,7 +32,7 @@ export const gptPricingTiers: PricingTier[] = [
     description: "Empower your growing business with advanced capabilities.",
     features: [
       "Everything in Basic plus",
-      "2 million tokens to supercharge your projects",
+      
       "4,800 Messages per Month",
       "Enhanced Knowledge Base Access for deeper insights",
       "Effortless Assistant Sharing & Embedding",
@@ -48,7 +48,7 @@ export const gptPricingTiers: PricingTier[] = [
     description: "Unleash the full power of IntelliSync for your organization.",
     features: [
       "Everything in Professional Plus",
-      "3 million tokens to meet enterprise-scale demands",
+      
       "7,200 Messages per Month",
       "Advanced Knowledge Base Access for strategic insights",
       "Share and embed across your organization with ease",
@@ -56,6 +56,7 @@ export const gptPricingTiers: PricingTier[] = [
       "Larger Embedding File Sizes for expansive projects",
       "Get exclusive Early Beta Feature Releases",
       "Unlimited Custom GPT Builds",
+      "1,000 FREE messages for testing your GPT Prior to launching",
       "1,000 FREE messages for testing your GPT Prior to launching",
       "API Access for total customization (Coming Soon)"
     ],
