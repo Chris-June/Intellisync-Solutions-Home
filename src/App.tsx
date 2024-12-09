@@ -4,12 +4,13 @@ import Hero from '@/components/sections/hero';
 import Features from '@/components/sections/features';
 import About from '@/components/sections/about';
 import Work from '@/components/sections/work';
+import GptBuilder from '@/components/sections/gpt-builder';
 import Pricing from '@/components/sections/pricing';
 import Promotions from '@/components/sections/promotions';
 import PrivacyPolicy from '@/components/sections/policies/privacy-policy';
 import TermsOfService from '@/components/sections/policies/terms-of-service';
 import CookiePolicy from '@/components/sections/policies/cookie-policy';
-import Documentation from '@/components/sections/documentation';
+import Documentation from '@/pages/documentation';
 import Cta from '@/components/sections/cta';
 import Footer from '@/components/sections/footer';
 import { Toaster } from '@/components/ui/sonner';
@@ -18,7 +19,7 @@ import { DialogProvider } from '@/components/ui/dialog-provider';
 
 function App() {
   const location = useLocation();
-  const isStaticPage = ['/privacy-policy', '/terms-of-service', '/cookie-policy', '/docs'].includes(location.pathname);
+  const isStaticPage = ['/privacy-policy', '/terms-of-service', '/cookie-policy', '/documentation'].includes(location.pathname);
 
   return (
     <ThemeProvider defaultTheme="dark" storageKey="intellisync-ui-theme">
@@ -31,7 +32,7 @@ function App() {
                 '/privacy-policy': <PrivacyPolicy />,
                 '/terms-of-service': <TermsOfService />,
                 '/cookie-policy': <CookiePolicy />,
-                '/docs': <Documentation />,
+                '/documentation': <Documentation />,
               }[location.pathname]
             ) : (
               <>
@@ -39,6 +40,7 @@ function App() {
                 <Features />
                 <About />
                 <Work />
+                <GptBuilder />
                 <Promotions />
                 <Pricing />
                 <Cta />

@@ -41,7 +41,7 @@ export default function Pricing() {
             Flexible Pricing for Every Need
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
-            Choose the perfect plan for your website. All plans include modern, responsive design
+            Choose the perfect custom plan for your custom website. All plans include modern, responsive design
             and essential features.
           </p>
         </motion.div>
@@ -74,8 +74,10 @@ export default function Pricing() {
                   <ul className="space-y-2">
                     {tier.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2">
-                        <Check className="h-4 w-4 text-emerald-400" />
-                        <span className="text-muted-foreground">{feature}</span>
+                        <div key={feature} className="flex items-center space-x-2">
+                          <Check className="h-4 w-4 stroke-emerald-400" />
+                          <span>{feature}</span>
+                        </div>
                       </li>
                     ))}
                   </ul>

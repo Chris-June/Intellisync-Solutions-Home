@@ -4,10 +4,12 @@ import { Button } from '@/components/ui/button';
 import { WorkCarousel } from '@/components/work-carousel';
 import { useState } from 'react';
 import { WorkModal } from '@/components/work-modal';
+import { ProjectModal } from '@/components/project-modal';
 import { projects } from '@/lib/projects-data';
 
 export default function Work() {
   const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null);
+  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
 
   return (
     <section id="work" className="py-24 bg-background relative overflow-hidden">
@@ -46,20 +48,28 @@ export default function Work() {
           <p className="text-muted-foreground text-lg max-w-[600px] text-center">
             Ready to build something extraordinary? Let's create your next digital success story together.
           </p>
-          <Button size="lg" className="gradient-primary">
+          <Button 
+            size="lg" 
+            className="gradient-primary"
+            onClick={() => setIsProjectModalOpen(true)}
+          >
             Start Your Project
-            <ExternalLink className="ml-2 h-4 w-4" />
+            <ExternalLink className="ml-2 h-4 w-4 stroke-primary-foreground" />
           </Button>
         </motion.div>
       </div>
 
       {selectedProject && (
         <WorkModal
-          isOpen={!!selectedProject}
-          onClose={() => setSelectedProject(null)}
           project={selectedProject}
+          onClose={() => setSelectedProject(null)}
         />
       )}
+      
+      <ProjectModal 
+        isOpen={isProjectModalOpen}
+        onClose={() => setIsProjectModalOpen(false)}
+      />
     </section>
   );
 }

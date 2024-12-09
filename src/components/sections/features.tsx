@@ -95,7 +95,7 @@ export default function Features() {
   const [selectedFeature, setSelectedFeature] = useState<typeof features[0] | null>(null);
 
   return (
-    <section id="features" className="py-24 bg-muted/50">
+    <section id="features" className="py-24">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <motion.div
@@ -123,11 +123,9 @@ export default function Features() {
           >
             {features.map((feature, index) => (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="relative overflow-hidden">
+                <Card>
                   <CardHeader>
-                    <div className="h-12 w-12 rounded-lg gradient-primary p-2.5 mb-4">
-                      <feature.icon className="h-full w-full text-primary-foreground" />
-                    </div>
+                    <feature.icon className="h-6 w-6 stroke-emerald-400 mb-4" />
                     <CardTitle className="text-xl">{feature.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -140,7 +138,7 @@ export default function Features() {
                       onClick={() => setSelectedFeature(feature)}
                     >
                       Learn More
-                      <ExternalLink className="ml-2 h-4 w-4" />
+                      <ExternalLink className="ml-2 h-4 w-4 stroke-emerald-400" />
                     </Button>
                   </CardContent>
                 </Card>

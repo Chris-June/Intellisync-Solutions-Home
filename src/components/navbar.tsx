@@ -1,5 +1,13 @@
 import { motion } from 'framer-motion';
-import { Brain, Menu } from 'lucide-react';
+import { 
+  Menu, 
+  Sparkles, 
+  Info, 
+  Briefcase, 
+  PiggyBank, 
+  MessageSquare, 
+  FileText 
+} from 'lucide-react';
 import { Link as ScrollLink } from 'react-scroll';
 import { Link as RouterLink } from 'react-router-dom';
 import { Button } from './ui/button';
@@ -13,12 +21,12 @@ import {
 } from './ui/sheet';
 
 const navItems = [
-  { name: 'Features', to: 'features' },
-  { name: 'About', to: 'about' },
-  { name: 'Work', to: 'work' },
-  { name: 'Pricing', to: 'pricing' },
-  { name: 'Contact', to: 'contact' },
-  { name: 'Documentation', to: '/docs', isRoute: true },
+  { name: 'Features', to: 'features', icon: Sparkles },
+  { name: 'About', to: 'about', icon: Info },
+  { name: 'Work', to: 'work', icon: Briefcase },
+  { name: 'Pricing', to: 'pricing', icon: PiggyBank },
+  { name: 'Contact', to: 'contact', icon: MessageSquare },
+  { name: 'Documentation', to: '/documentation', icon: FileText, type: 'route' },
 ];
 
 export default function Navbar() {
@@ -35,7 +43,6 @@ export default function Navbar() {
           smooth
           className="flex items-center space-x-2 cursor-pointer"
         >
-          <Brain className="h-8 w-8 bg-gradient-to-br from-emerald-400 to-cyan-400 rounded-lg p-1.5" />
           <span className="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
             IntelliSync
           </span>
@@ -44,22 +51,24 @@ export default function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item) =>
-            item.isRoute ? (
+            item.type === 'route' ? (
               <RouterLink
                 key={item.to}
                 to={item.to}
-                className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
+                className="flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
               >
-                {item.name}
+                <item.icon className="h-4 w-4 stroke-emerald-400" />
+                <span>{item.name}</span>
               </RouterLink>
             ) : (
               <ScrollLink
                 key={item.to}
                 to={item.to}
                 smooth
-                className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
+                className="flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
               >
-                {item.name}
+                <item.icon className="h-4 w-4 stroke-emerald-400" />
+                <span>{item.name}</span>
               </ScrollLink>
             )
           )}
@@ -82,26 +91,27 @@ export default function Navbar() {
               </SheetHeader>
               <div className="flex flex-col space-y-4 mt-4">
                 {navItems.map((item) =>
-                  item.isRoute ? (
+                  item.type === 'route' ? (
                     <RouterLink
                       key={item.to}
                       to={item.to}
-                      className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
+                      className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
                     >
-                      {item.name}
+                      <item.icon className="h-4 w-4 stroke-emerald-400" />
+                      <span>{item.name}</span>
                     </RouterLink>
                   ) : (
                     <ScrollLink
                       key={item.to}
                       to={item.to}
                       smooth
-                      className="text-sm font-medium transition-colors hover:text-primary cursor-pointer"
+                      className="flex items-center space-x-2 text-sm font-medium transition-colors hover:text-primary cursor-pointer"
                     >
-                      {item.name}
+                      <item.icon className="h-4 w-4 stroke-emerald-400" />
+                      <span>{item.name}</span>
                     </ScrollLink>
                   )
                 )}
-                <Button>Get Started</Button>
               </div>
             </SheetContent>
           </Sheet>

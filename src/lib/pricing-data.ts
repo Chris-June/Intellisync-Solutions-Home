@@ -44,6 +44,57 @@ export const addOns: AddOn[] = [
     id: 'gradient-fills',
     name: 'Gradient Colour Fills',
     description: 'Beautiful gradient backgrounds and text effects'
+  },
+
+  {
+    id: 'sticky-nav',
+    name: 'Sticky Navigation Bar',
+    description: 'Navigation bar that remains fixed at the top while scrolling, with smooth visibility toggles based on scroll direction'
+  },
+  {
+    id: 'custom-tooltips',
+    name: 'Customizable Tooltips',
+    description: 'Dynamic tooltips with adjustable styles, animations, and content based on user interaction'
+  },
+  {
+    id: 'accordion',
+    name: 'Accordion Components',
+    description: 'Expandable and collapsible sections for content organization, with smooth animation effects'
+  },
+  {
+    id: 'loading-indicators',
+    name: 'Loading Spinners & Skeleton Screens',
+    description: 'Animated loading indicators and placeholder screens to enhance perceived performance'
+  },
+  {
+    id: 'responsive-modals',
+    name: 'Responsive Modals',
+    description: 'Highly customizable modals with entrance and exit animations, optimized for different devices'
+  },
+  {
+    id: 'context-menus',
+    name: 'Context Menus',
+    description: 'Interactive right-click menus with animated transitions and customizable options'
+  },
+  {
+    id: 'fab-buttons',
+    name: 'Floating Action Buttons (FAB)',
+    description: 'Circular buttons with expanding radial menus or smooth pop-out options for quick actions'
+  },
+  {
+    id: 'micro-interactions',
+    name: 'Micro-Interaction Indicators',
+    description: 'Subtle animations like button ripples, toggle switches, or checkmark animations for enhanced feedback on user actions'
+  },
+  {
+    id: 'progress-bars',
+    name: 'Dynamic Progress Bars',
+    description: 'Animated progress indicators with customizable colors, gradients, and labels'
+  },
+  {
+    id: 'tab-animations',
+    name: 'Tabs with Sliding Animations',
+    description: 'Multi-tab components with sleek sliding or fading transitions between content areas'
   }
 ];
 
@@ -87,8 +138,8 @@ export const pricingTiers: PricingTier[] = [
       'Testimonials Section',
       'FAQ Section',
       'Contact Form Integration',
-      'Google Analytics Integration',
-      'Basic SEO Optimization',
+      
+       'Basic SEO Optimization',
       'Choose 4 Add-ons',
       'Priority Support'
     ],
@@ -101,7 +152,7 @@ export const pricingTiers: PricingTier[] = [
     description: 'Complete solution for large organizations',
     features: [
       'All Professional Features',
-      'E-commerce Integration',
+  
       'Custom Database Integration',
       'User Authentication',
       'Admin Dashboard',

@@ -154,7 +154,7 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
                             size="icon"
                             className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
                           >
-                            <Info className="h-4 w-4" />
+                            <Info className="h-4 w-4 stroke-emerald-400 cursor-help" />
                             <span className="sr-only">More information</span>
                           </Button>
                         </TooltipTrigger>
