@@ -61,7 +61,12 @@ export default function Pricing() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="h-full">
+              <Card className={`h-full relative ${tier.highlighted ? 'border-2 border-emerald-400' : ''}`}>
+                {tier.highlighted && (
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-400 text-background px-3 py-1 rounded-full text-sm font-medium">
+                    Popular
+                  </div>
+                )}
                 <CardHeader>
                   <CardTitle className="text-2xl">{tier.name}</CardTitle>
                   <div className="flex items-baseline gap-1">

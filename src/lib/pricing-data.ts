@@ -112,43 +112,61 @@ export const pricingTiers: PricingTier[] = [
   {
     id: 'basic',
     name: 'Basic',
-    price: 9.99,
-    description: 'Perfect for individuals and small teams',
+    price: 19.99,
+    description: 'Essential features for any website',
     features: [
-      'Unlimited Add-ons',
-      'Basic Component Library',
-      'Standard Support'
+      'Navigation Header',
+      'Hero Section with Background Image',
+      'Call To Action Section',
+      'About Us Section',
+      'Features Section',
+      'Pricing Section',
+      'Footer',
+      'Single Page Website (SPA)',
+      'Choose 2 Add-ons'
     ],
-    maxAddOns: 3,
+    maxAddOns: 2,
     highlighted: false
   },
   {
-    id: 'pro',
-    name: 'Pro',
-    price: 19.99,
-    description: 'Advanced features for growing projects',
+    id: 'professional',
+    name: 'Professional',
+    price: 39.99,
+    description: 'Advanced features for growing businesses',
     features: [
       'All Basic Features',
-      'Extended Component Library',
-      'Priority Support',
-      'Custom Component Development'
+      'Blog Section',
+      'Team Section',
+      'Testimonials Section',
+      'FAQ Section',
+      'Contact Form Integration',
+      'Google Analytics Integration',
+      'Basic SEO Optimization',
+      'Choose 4 Add-ons',
+      'Priority Support'
     ],
-    maxAddOns: 6,
+    maxAddOns: 4,
     highlighted: true
   },
   {
     id: 'enterprise',
     name: 'Enterprise',
-    price: 49.99,
-    description: 'Comprehensive solution for large organizations',
+    price: 79.99,
+    description: 'Complete solution for large organizations',
     features: [
-      'All Pro Features',
-      'Full Component Library',
-      'Dedicated Support',
-      'Unlimited Custom Development',
-      'White-Label Options'
+      'All Professional Features',
+      'E-commerce Integration',
+      'Custom Database Integration',
+      'User Authentication',
+      'Admin Dashboard',
+      'Content Management System',
+      'Advanced SEO Features',
+      'Performance Optimization',
+      'All Add-ons Included',
+      'Premium Support',
+      'Monthly Maintenance'
     ],
-    maxAddOns: 10,
+    maxAddOns: 8,
     highlighted: false
   }
 ];

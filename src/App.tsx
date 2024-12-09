@@ -21,31 +21,44 @@ function App() {
   const location = useLocation();
   const isStaticPage = ['/privacy-policy', '/terms-of-service', '/cookie-policy', '/documentation'].includes(location.pathname);
 
+  if (isStaticPage) {
+    return (
+      <ThemeProvider defaultTheme="dark" storageKey="intellisync-ui-theme">
+        <DialogProvider>
+          <div className="relative flex min-h-screen flex-col bg-background text-foreground">
+            <Navbar />
+            <main className="flex-1 flex flex-col pt-16">
+              {
+                {
+                  '/privacy-policy': <PrivacyPolicy />,
+                  '/terms-of-service': <TermsOfService />,
+                  '/cookie-policy': <CookiePolicy />,
+                  '/documentation': <Documentation />,
+                }[location.pathname]
+              }
+            </main>
+            <Footer />
+            <Toaster />
+          </div>
+        </DialogProvider>
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider defaultTheme="dark" storageKey="intellisync-ui-theme">
       <DialogProvider>
         <div className="relative flex min-h-screen flex-col bg-background text-foreground">
           <Navbar />
           <main className="flex-1 flex flex-col">
-            {isStaticPage ? (
-              {
-                '/privacy-policy': <PrivacyPolicy />,
-                '/terms-of-service': <TermsOfService />,
-                '/cookie-policy': <CookiePolicy />,
-                '/documentation': <Documentation />,
-              }[location.pathname]
-            ) : (
-              <>
-                <Hero />
-                <Features />
-                <About />
-                <Work />
-                <GptBuilder />
-                <Promotions />
-                <Pricing />
-                <Cta />
-              </>
-            )}
+            <Hero />
+            <Features />
+            <About />
+            <Work />
+            <GptBuilder />
+            <Promotions />
+            <Pricing />
+            <Cta />
           </main>
           <Footer />
           <Toaster />
