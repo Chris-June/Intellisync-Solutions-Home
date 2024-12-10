@@ -126,22 +126,22 @@ export const pricingTiers: PricingTier[] = [
         name: 'One-time $500 Build Fee',
         description: 'Initial setup cost for building and deploying your website. This covers the development, testing, and launch of your site.'
       },
+
+    {
+        name: 'Single Page Website',
+        description: 'Professional navigation menu that adapts to all screen sizes. Includes dropdown menus and mobile-friendly hamburger menu.'
+      },
+
       {
         name: 'Set and Forget',
         description: 'Monthly maintenance fee that covers hosting, security updates, and basic technical support, including an annual UI refresh'
       },
+
       {
-        name: 'Header Navigation',
-        description: 'Professional navigation menu that adapts to all screen sizes. Includes dropdown menus and mobile-friendly hamburger menu.'
+        name: 'Section List',
+        description: 'All Single Page Websites include the following sections, Header/Navigation; Hero Section; CTA Section; Features Section; Footer-with contact details.'
       },
-      {
-        name: 'Footer Links',
-        description: 'Organized footer section with important links, contact information, and social media integration.'
-      },
-      {
-        name: 'Basic Contact Form',
-        description: 'User-friendly contact form with email notifications, spam protection, and basic form validation.'
-      },
+    
       {
         name: 'Mobile Responsive',
         description: 'Website automatically adjusts to look and function perfectly on all devices - phones, tablets, and computers.'
