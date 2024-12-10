@@ -19,14 +19,14 @@ import {
 import { Label } from '@/components/ui/label';
 import { addOns } from '@/lib/pricing-data';
 import { PricingTier } from '@/lib/gpt-pricing-data';
-import { sendContactEmail } from '@/lib/email-service';
+import { sendContactEmail, EmailData } from '@/lib/email-service';
 import { toast } from 'sonner';
 import { Info } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
-  selectedTier: PricingTier;
+  selectedTier?: PricingTier | null;
 }
 
 export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProps) {
@@ -44,14 +44,15 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
     setIsSubmitting(true);
     
     try {
-      await sendContactEmail({
+      const emailData: EmailData = {
         ...formData,
-        selectedTier: {
+        selectedTier: selectedTier ? {
           name: selectedTier.name,
           price: selectedTier.price ?? 0
-        }
-      });
+        } : null
+      };
       
+      await sendContactEmail(emailData);
       toast.success('Thank you for your interest! We will contact you soon.');
       onClose();
     } catch (error) {
@@ -84,7 +85,9 @@ export function ContactModal({ isOpen, onClose, selectedTier }: ContactModalProp
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="w-full sm:max-w-[800px] max-h-[90vh] overflow-y-auto bg-background border-2 border-emerald-400/50 focus-within:border-emerald-400">
         <DialogHeader className="flex-shrink-0">
-          <DialogTitle className="text-2xl">Get Started with {selectedTier.name} Plan</DialogTitle>
+          <DialogTitle className="text-2xl">
+            {selectedTier ? `Get Started with ${selectedTier.name} Plan` : 'Contact Us'}
+          </DialogTitle>
           <DialogDescription className="text-base">
             Fill out the form below and we'll get back to you within 24 hours.
           </DialogDescription>

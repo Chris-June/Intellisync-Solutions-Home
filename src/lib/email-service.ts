@@ -1,15 +1,15 @@
 import { addOns } from './pricing-data';
 
-interface EmailData {
+export interface EmailData {
   name: string;
   email: string;
   phone: string;
   message: string;
   selectedAddOns: string[];
-  selectedTier: {
+  selectedTier?: {
     name: string;
     price: number;
-  };
+  } | null;
   subject?: string;
   type?: string;
 }
