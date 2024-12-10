@@ -98,12 +98,18 @@ export const addOns: AddOn[] = [
   }
 ];
 
+interface Feature {
+  name: string;
+  description: string;
+}
+
 export interface PricingTier {
   id: string;
   name: string;
   price: number;
+  buildCost: number;
   description: string;
-  features: string[];
+  features: Feature[];
   maxAddOns: number;
   highlighted: boolean;
 }
@@ -113,14 +119,49 @@ export const pricingTiers: PricingTier[] = [
     id: 'basic',
     name: 'Basic',
     price: 19.99,
+    buildCost: 500,
     description: 'Essential features for any website',
     features: [
-      'Header Navigation',
-      'Hero Section',
-      'CTA Section',
-      'Features Section',
-      'Choose 2 Add-ons',
-      'Footer with Contact Details'
+      {
+        name: 'One-time $500 Build Fee',
+        description: 'Initial setup cost for building and deploying your website. This covers the development, testing, and launch of your site.'
+      },
+      {
+        name: 'Set and Forget',
+        description: 'Monthly maintenance fee that covers hosting, security updates, and basic technical support, including an annual UI refresh'
+      },
+      {
+        name: 'Header Navigation',
+        description: 'Professional navigation menu that adapts to all screen sizes. Includes dropdown menus and mobile-friendly hamburger menu.'
+      },
+      {
+        name: 'Footer Links',
+        description: 'Organized footer section with important links, contact information, and social media integration.'
+      },
+      {
+        name: 'Basic Contact Form',
+        description: 'User-friendly contact form with email notifications, spam protection, and basic form validation.'
+      },
+      {
+        name: 'Mobile Responsive',
+        description: 'Website automatically adjusts to look and function perfectly on all devices - phones, tablets, and computers.'
+      },
+      {
+        name: 'SEO Optimization',
+        description: 'Basic search engine optimization including meta tags, sitemap generation, and proper heading structure.'
+      },
+      {
+        name: 'SSL Certificate',
+        description: 'Secure HTTPS encryption to protect user data and improve search engine rankings.'
+      },
+      {
+        name: 'Domain Setup',
+        description: 'Configuration of your domain name with proper DNS settings.'
+      },
+      {
+        name: 'Basic Analytics',
+        description: 'Integration of Google Analytics to track visitor behavior, traffic sources, and user engagement.'
+      }
     ],
     maxAddOns: 2,
     highlighted: false
@@ -129,14 +170,47 @@ export const pricingTiers: PricingTier[] = [
     id: 'professional',
     name: 'Professional',
     price: 29.99,
+    buildCost: 500,
     description: 'Complete solution for growing businesses',
     features: [
-      'All Basic Features',
-      'About Us Section',
-      'Pricing Section',
-      'Choose 4 Add-ons',
-      'SEO Optimization',
-      'Footer with Contact Details'
+     
+      {
+        name: 'All Basic Features',
+        description: 'Includes all features from the Basic plan with enhanced capabilities and professional customization.'
+      },
+      {
+        name: 'Set and Forget',
+        description: 'Everything in Basic Plan plus annual UI and SEO refresh included.'
+      },
+  
+      {
+        name: 'Blog Integration',
+        description: 'Full-featured blog system with categories, tags, comments, and RSS feed. Perfect for content marketing.'
+      },
+      {
+        name: 'Newsletter Signup',
+        description: 'Email list building tool with custom signup forms, automated welcome emails, and integration with major email providers.'
+      },
+      {
+        name: 'Social Media Integration',
+        description: 'Advanced social media feeds, sharing buttons, and automatic post scheduling capabilities.'
+      },
+      {
+        name: 'Advanced Contact Forms',
+        description: 'Multiple custom forms with file uploads, conditional logic, and integration with CRM systems.'
+      },
+      {
+        name: 'Custom Styling',
+        description: 'Professional design customization including custom colors, fonts, and layouts matching your brand identity.'
+      },
+      {
+        name: 'Performance Optimization',
+        description: 'Advanced caching, image optimization, and code minification for faster page loads and better user experience.'
+      },
+      {
+        name: 'Advanced Analytics',
+        description: 'Enhanced tracking with conversion goals, event tracking, and detailed user behavior analysis.'
+      }
     ],
     maxAddOns: 4,
     highlighted: true
@@ -145,13 +219,42 @@ export const pricingTiers: PricingTier[] = [
     id: 'enterprise',
     name: 'Enterprise',
     price: 79.99,
+    buildCost: 500,
     description: 'Advanced features for large organizations',
     features: [
-      'All Professional Features',
-      '8 Interactive Add-ons',
-      'Custom Contact Form',
-      'SEO Optimization',
-      'Footer with Contact Details & Social Media Links'
+      {
+        name: 'All Professional Features',
+        description: 'Includes all features from the Professional plan with enterprise-level customization and scalability.'
+      },
+      
+      {
+        name: 'Set and Forget',
+        description: 'Everything in Professional Plan plus  Semi-annual UI review and SEO refresh. Add 2 new custom interactive features per year.'
+      },
+      
+      {
+        name: 'Custom API Integration',
+        description: 'Connect your website with third-party services, CRM systems, and business tools through custom API development.'
+      },
+      {
+        name: 'Advanced Security Features',
+        description: 'Enterprise-grade security with regular penetration testing, advanced firewall, and DDoS protection.'
+      },
+      {
+        name: 'Priority Support',
+        description: "Coming Soon"
+        
+        //'Priority technical support with dedicated account manager and emergency response team.'
+      },
+      
+      {
+        name: 'Multiple User Accounts',
+        description: 'Manage multiple user accounts with different permission levels and access controls.'
+      },
+      {
+        name: 'Custom Feature Development',
+        description: 'Development of custom features and functionalities specific to your business needs.'
+      }
     ],
     maxAddOns: 8,
     highlighted: false
